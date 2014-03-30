@@ -1,4 +1,7 @@
-<div class="large-12 columns">
+<div ng-show="upgrade" class="alert-box alert">
+  Web Speech API is not supported by this browser. Upgrade to <a href="//www.google.com/chrome">Chrome</a> version 25 or later.
+</div>
+<div ng-show="!upgrade" class="large-12 columns">
 	<form>
       <fieldset>
         <legend>Speech Recognition</legend>
@@ -29,11 +32,9 @@
     </form>
 		<div ng-show="answer && init" data-alert="" class="alert-box success">
 		  Correct!
-		  <a href="" class="close">×</a>
 		</div>
 		<div ng-show="!answer && init" data-alert="" class="alert-box alert">
 		  Wrong!
-		  <a href="" class="close">×</a>
 		</div>
     <div class="panel callout radius">
       <p>{{transcript}}</p>
