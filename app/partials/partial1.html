@@ -1,0 +1,42 @@
+<div class="large-12 columns">
+	<form>
+      <fieldset>
+        <legend>Speech Recognition</legend>
+
+        <div class="row collapse">
+          <label>Type a word or phrase to compare</label>
+          <div class="small-11 columns">
+            <input ng-change="resetAnswer()" ng-model="word"type="text" placeholder="">
+          </div>
+          <div class="small-1 columns">
+            <span ng-click="toggleMic()" class="postfix fi-micrphone style3">
+      				<span ng-show="mic" class="fi-microphone style3 mic-on"></span>
+      				<span ng-show="!mic" class="fi-microphone style3 mic-off"></span>
+            </span>
+          </div>
+        </div>
+        <div class="row collapse">
+          <label>Language</label>
+          <div class="small-6 columns">
+            <select ng-disabled="mic" ng-change="populateDialects()" ng-model="language" ng-options="langs.indexOf(lang) as lang[0] for lang in langs"></select>
+          </div>
+          <div ng-show="currentDialects.length > 1" class="small-5 columns">
+            <select ng-disabled="mic" ng-change="setDialect()" ng-model="_dia" ng-options="currentDialects.indexOf(cdial) as cdial[1] for cdial in currentDialects">
+            </select>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+		<div ng-show="answer && init" data-alert="" class="alert-box success">
+		  Correct!
+		  <a href="" class="close">×</a>
+		</div>
+		<div ng-show="!answer && init" data-alert="" class="alert-box alert">
+		  Wrong!
+		  <a href="" class="close">×</a>
+		</div>
+    <div class="panel callout radius">
+      <p>{{transcript}}</p>
+    </div>
+  </div>
+</div>
